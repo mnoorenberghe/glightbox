@@ -1971,10 +1971,7 @@ class GlightboxInit {
      * @return {null}
      */
     build() {
-        if (this.built) {
-            return false;
-        }
-
+      if (!this.built) {
         const nextSVG = utils.has(this.settings.svg, 'next') ? this.settings.svg.next : '';
         const prevSVG = utils.has(this.settings.svg, 'prev') ? this.settings.svg.prev : '';
         const closeSVG = utils.has(this.settings.svg, 'close') ? this.settings.svg.close : '';
@@ -2043,6 +2040,8 @@ class GlightboxInit {
                 }
             })
         }
+      }
+        this.slidesContainer.textContent = ""; // Clear existing slides
         each(this.elements, () => {
             let slide = createHTML(this.settings.slideHtml);
             this.slidesContainer.appendChild(slide);
